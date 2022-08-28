@@ -15,6 +15,33 @@
         <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
         <!--生成mapper.xml时覆盖原文件-->
         <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />
+        <plugin type="com.wwg.vue.creator.common.plugin.ServiceGeneratorPlugin" >
+            <property name="targetProject" value="src\main\java"/>
+            <property name="servicePackage" value="com.wwg.vue.creator.mbg.service"/>
+            <property name="serviceImplPackage" value="com.wwg.vue.creator.mbg.service.impl"/>
+            <!--UserService,该值则为Service-->
+            <property name="serviceSuffix" value="Service"/>
+            <!--Service接口的父接口-->
+            <property name="superServiceInterface" value="org.aurochsframework.boot.commons.service.GeneralService"/>
+            <!--ServiceImpl的父类-->
+            <property name="superServiceImpl" value="org.aurochsframework.boot.commons.service.AbstractGeneralService"/>
+            <!--controller的父类接口-->
+            <!--            <property name="superController" value="org.aurochsframework.boot.commons.controller.GeneralCrudController"/>-->
+        </plugin>
+        <plugin type="com.wwg.vue.creator.common.plugin.ControllerGeneratorPlugin" >
+            <property name="targetProject" value="src\main\java"/>
+            <property name="servicePackage" value="com.wwg.vue.creator.mbg.service"/>
+            <!--            <property name="serviceImplPackage" value="cn.renhe.va.service.generated.impl"/>-->
+            <property name="controllerPackage" value="com.wwg.vue.creator.mbg.controller"/>
+            <!--UserService,该值则为Service-->
+            <property name="serviceSuffix" value="Service"/>
+            <!--Service接口的父接口-->
+            <property name="superServiceInterface" value="org.aurochsframework.boot.commons.service.GeneralService"/>
+            <!--ServiceImpl的父类-->
+            <!--            <property name="superServiceImpl" value="org.aurochsframework.boot.commons.service.AbstractGeneralService"/>-->
+            <!--controller的父类接口-->
+            <property name="superController" value="com.wwg.vue.creator.mbg.AbstractController"/>
+        </plugin>
         <!--可以自定义生成model的代码注释-->
         <commentGenerator type="com.wwg.vue.creator.mbg.CommentGenerator">
             <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
